@@ -38,7 +38,6 @@ sudo apt-get install -y \
 
 # Download specific Go version
 echo "Removing existing Go packages and installing Go"
-<<<<<<< HEAD
 [[ -e /tmp/go ]] && rm -rf /tmp/go*
 sudo apt remove -y \
   'golang-*'
@@ -47,14 +46,6 @@ wget https://dl.google.com/go/go1.14.3.linux-amd64.tar.gz
 tar xf go1.14.3.linux-amd64.tar.gz
 sudo cp -r go /usr/lib/go-1.14
 rm -rf /tmp/go*
-=======
-sudo apt remove 'golang-*' -y
-cd /tmp
-wget https://dl.google.com/go/go1.13.9.linux-amd64.tar.gz
-tar xf go1.13.9.linux-amd64.tar.gz
-sudo mv go /usr/lib/go-1.13
-rm -rf /tmp/go1.13.9*
->>>>>>>  Update vagrant box, change how we're installing Go (version pinning), add timeout
 
 # Set GO paths for vagrant user
 echo 'export GOROOT=/usr/lib/go-1.14
