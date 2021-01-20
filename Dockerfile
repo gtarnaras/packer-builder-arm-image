@@ -16,7 +16,7 @@ COPY . .
 
 RUN go build -o packer-builder-arm-image
 
-FROM ubuntu:eoan
+FROM ubuntu:focal
 
 RUN apt-get update -qq \
  && DEBIAN_FRONTEND=noninteractive apt-get install -qqy \
@@ -33,6 +33,7 @@ ENV PACKER_VERSION 1.6.0
 RUN wget https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip -O /tmp/packer.zip && \
   unzip /tmp/packer.zip -d /bin && \
   rm /tmp/packer.zip
+
 WORKDIR /build
 COPY entrypoint.sh /entrypoint.sh
 

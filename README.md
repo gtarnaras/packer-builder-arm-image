@@ -97,7 +97,7 @@ That's it! Flash it and run!
 
 ## Running with Docker
 ### Prerequisites
-Your environment must be running docker daemon with the `devicemapper` [storage driver](https://docs.docker.com/storage/storagedriver/select-storage-driver/) as `kpartx` does not work with the newer `overlay2` prefferred driver. `devicemapper` is [not available on Docker for Mac / Windows](https://docs.docker.com/storage/storagedriver/select-storage-driver/#docker-desktop-for-mac-and-docker-desktop-for-windows).
+Your environment must be running docker daemon with the `devicemapper` [storage driver](https://docs.docker.com/storage/storagedriver/select-storage-driver/) as `kpartx` does not work with the newer `overlay2` preferred driver. `devicemapper` is [not available on Docker for Mac / Windows](https://docs.docker.com/storage/storagedriver/select-storage-driver/#docker-desktop-for-mac-and-docker-desktop-for-windows).
 
 ### Option 1: Clone this repo and build the Docker image locally
 
