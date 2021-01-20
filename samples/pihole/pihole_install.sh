@@ -1,10 +1,12 @@
 #!/bin/bash -ex
+# this should be converted in an ansible role but i am too lazy right now
 
 export PIHOLE_SKIP_OS_CHECK=true
 mkdir -p /etc/pihole/ && touch /boot/ssh
 
+# Used for unattended installation
 cat << EOF > /etc/pihole/setupVars.conf
-WEBPASSWORD=a215bae8b5ec659b0980a76dlkds09644731cd439cab41494447a8705c22b3aa41c
+WEBPASSWORD=0e69e6a4038df88d4c62c837edd7e04a95ea6368bca9d469e00ad766a2266770
 PIHOLE_INTERFACE=eth0
 IPV4_ADDRESS=192.168.1.138/24
 IPV6_ADDRESS=2601:444:8111:403:55d6:2f11:41bf:13bb
@@ -37,5 +39,15 @@ dtparam=pwr_led_trigger=none
 dtparam=pwr_led_activelow=off
 EOF
 
-curl -sSL https://install.pi-hole.net | bash /dev/stdin --unattended
+# Write less often to the DB
+cat << EOF >> /etc/pihole/pihole-FTL.conf
+MAXDBDAYS=30
+DBINTERVAL=15.0
+EOF
 
+# Save logs to ram
+echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
+wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
+apt update && apt install log2ram
+
+curl -sSL https://install.pi-hole.net | bash /dev/stdin --unattended
