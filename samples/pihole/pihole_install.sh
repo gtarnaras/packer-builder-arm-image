@@ -28,7 +28,7 @@ API_QUERY_LOG_SHOW=all
 API_PRIVACY_MODE=false
 EOF
 
-# Disable leds
+# Disable leds and HDMI
 cat << EOF >> /boot/config.txt
 # Disable the ACT LED.
 dtparam=act_led_trigger=none
@@ -37,6 +37,9 @@ dtparam=act_led_activelow=off
 # Disable the PWR LED.
 dtparam=pwr_led_trigger=none
 dtparam=pwr_led_activelow=off
+
+# Disable HDMI
+hdmi_blanking=2
 EOF
 
 # Write less often to the DB
